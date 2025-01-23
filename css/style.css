@@ -1,0 +1,2051 @@
+/* Reset CSS */
+*,
+*::before,
+*::after {
+  margin: 0;
+  padding: 0;
+  box-sizing: border-box;
+  scroll-behavior: smooth;
+}
+/* CSS Variables */
+:root {
+  font-size: 62.5%;
+/* font-sizes */
+  --font-size-xl: 2rem;
+  --font-size-l: 1.8rem;
+  --font-size-tl: 1.7rem;
+  --font-size-xm: 1.5rem;
+  --font-size-m: 1.3rem;
+  --font-size-tm: 1.25rem;
+  --font-size-xs: 1.2rem;
+  --font-size-s: 1.1rem;
+  --font-size-ts: 1rem;
+
+/* Font Families */
+  --body-font: 'Poppins', sans-serif;
+  --opskrif-font: 'Open Sans', sans-serif;  
+/* Colour Series */
+/* Primary Color: The main color for the brand or design */
+  --color-primary: #180F08; /* #32312Bright blue, used for main buttons, links, and highlights, button primary background color eg */
+  --color-primary-dd: #2E1F21;
+  --color-primary-d: #2f2620;
+  --color-primary-m: #2F2620;
+  --color-primary-l: #463e39;
+  --color-white: #ffffff;
+  --color-black: #000;
+  
+/* Secondary Color: Complements the primary color and is used for secondary elements */
+  --color-secondary-l: #7C6F63; /* Neutral gray, used for secondary text and elements, button secondary background color eg */
+  --color-secondary-d: #686D67;
+
+/* Accent Color: Used for emphasis and drawing attention */
+  --color-accent: #6B0707; /* Bright yellow, used for call-to-actions, notifications, and accents, notification background colour */
+
+/* Neutral Colors: Used for backgrounds, text, and borders */
+  --color-neutral-light: #E0B57E; /* Light gray, used for backgrounds and lighter text, body background colour eg */
+  --color-neutral-medium: #E8E2D3;
+  --color-neutral-dark: #343A40; /* Dark gray, used for primary text and borders, paragraph color or background colour eg */
+
+/* State Colors: Indicate different interactive states or alerts */
+  --color-success: #28A745; /* Green, used for success messages and positive actions background color */
+  --color-error: #DC3545; /* Red, used for error messages and alerts background */
+
+/* Line Height */
+  --line-height-s: 1.2; /* Consistent line-height for readability */
+  --line-height-l: 1.3;
+
+
+/* Z-index Values */
+  --z-back: -10;
+  --z-normal: 1;
+  --z-tooltip: 10;
+  --z-fixed: 100;
+  --z-modal: 1000;
+
+
+}
+
+/* Base Styles */
+body {
+  font-family: var(--body-font);
+  background-color: var(--color-primary-dd);
+  cursor: url('../images/g2202.png'), auto;
+}
+
+html {
+  scroll-behavior: smooth;
+} 
+
+/* Layout Classes */
+.container {
+  display: grid;
+  grid-template-rows: 10vh 90vh repeat(17, min-content);
+  grid-template-columns: [full-start] minmax(6rem, 1fr) [center-start] repeat(10, [col-start] minmax(min-content, 15rem) [col-end]) [center-end] minmax(6rem, 1fr) [full-end];
+}
+
+/* Utility Classes */
+
+/** Whatsapp Button **/
+.whatsapp-ico{
+  fill: white;
+  width: 45px;
+  height: 45px;
+  padding: 3px;
+  background-color: #4dc247;
+  border-radius: 50%;
+  box-shadow: 2px 2px 6px rgba(0,0,0,0.4);
+  /* box-shadow: 2px 2px 11px rgba(0,0,0,0.7); */
+  position: fixed;
+  bottom: 1.5rem;
+  right : 1.5rem;
+  z-index: 60;
+}
+
+.whatsapp-ico:hover{
+  box-shadow: 2px 2px 11px rgba(0,0,0,0.7);
+}
+
+@media (max-width: 400px) {
+  .whatsapp-ico {
+    right: 0.5rem;
+  }
+}
+/** End of Whattsup Button **/
+/** Menu Button and Navigation **/
+.orde {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  min-height: 100vh;
+  margin: 0;
+}
+/*
+p {
+  margin: 0;
+} */
+
+#burger-toggle {
+  position: absolute;
+  appearance: none;
+  opacity: 0;
+}
+#burger-toggle:checked ~ .menu {
+  opacity: 1;
+  visibility: visible;
+}
+#burger-toggle:checked ~ .menu .menu-nav-link span div,
+#burger-toggle:checked ~ .menu img,
+#burger-toggle:checked ~ .menu .title p {
+  transform: translateY(0);
+  transition: 1.2s 0.1s cubic-bezier(0.35, 0, 0.07, 1);
+}
+#burger-toggle:checked ~ .menu .image-link:nth-child(1) img {
+  transition-delay: 0.18s;
+}
+#burger-toggle:checked ~ .menu .image-link:nth-child(2) img {
+  transition-delay: 0.26s;
+}
+#burger-toggle:checked ~ .menu .image-link:nth-child(3) img {
+  transition-delay: 0.34s;
+}
+#burger-toggle:checked ~ .menu .image-link:nth-child(4) img {
+  transition-delay: 0.42s;
+}
+#burger-toggle:checked ~ .burger-menu .line::after {
+  transform: translateX(0);
+}
+#burger-toggle:checked ~ .burger-menu .line:nth-child(1) {
+  transform: translateY(calc(var(--burger-menu-radius) / 5)) rotate(45deg);
+}
+#burger-toggle:checked ~ .burger-menu .line:nth-child(2) {
+  transform: scaleX(0);
+}
+#burger-toggle:checked ~ .burger-menu .line:nth-child(3) {
+  transform: translateY(calc(var(--burger-menu-radius) / -5)) rotate(-45deg);
+}
+
+.burger-menu {
+  --burger-menu-radius: 3em;
+  position: fixed;
+  top: 2vh;
+  right: 1.2vw;
+  z-index: 2000;
+  display: block;
+  background: #463e39;
+  width: var(--burger-menu-radius);
+  height: var(--burger-menu-radius);
+  border-radius: 5px;
+  outline: none;
+  cursor: url('../images/g2202.png'), auto;
+}
+.burger-menu .line {
+  position: absolute;
+  left: 15%;
+  width: 70%;
+  height: 3px;
+  background: rgba(250, 250, 250, 0.9);
+  border-radius: 10px;
+  overflow: hidden;
+  transition: 0.5s;
+}
+.burger-menu .line:nth-child(1) {
+  top: 30%;
+}
+.burger-menu .line:nth-child(2) {
+  top: 50%;
+}
+.burger-menu .line:nth-child(3) {
+  top: 70%;
+}
+.burger-menu .line::after {
+  position: absolute;
+  content: "";
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100%;
+  background: var(--primary-color-darker);
+  transform: translateX(-100%);
+  transition: 0.25s;
+}
+.burger-menu .line:nth-child(2)::after {
+  transition-delay: 0.1s;
+}
+.burger-menu .line:nth-child(3)::after {
+  transition-delay: 0.2s;
+}
+.burger-menu:hover .line::after {
+  transform: translateX(0);
+}
+
+.menu {
+  position: fixed;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100%;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  background: #1a1e23;
+  opacity: 0;
+  overflow-x: hidden;
+  visibility: hidden;
+  transition: 0.3s;
+  z-index: 1999; /* Ensure this is lower than the burger-menu */
+}
+@media screen and (max-width: 750px) {
+  .menu {
+    display: block;
+  }
+}
+.menu-nav {
+  display: flex;
+  flex-wrap: wrap;
+  margin: 10px 0;
+  padding: 0;
+  text-align: center;
+  list-style-type: none;
+}
+@media screen and (max-width: 750px) {
+  .menu-nav {
+    flex-direction: column;
+  }
+}
+.menu-nav-item {
+  flex: 1;
+}
+.menu-nav-link {
+  position: relative;
+  display: inline-flex;
+  font-size: 1.5rem;
+  color: white;
+  text-decoration: none;
+  letter-spacing: 2px;
+}
+.menu-nav-link span {
+  overflow: hidden;
+}
+.menu-nav-link span div {
+  transform: translateY(102%);
+}
+.menu-nav-link::after {
+  position: absolute;
+  content: "";
+  top: 100%;
+  left: 0;
+  width: 100%;
+  height: 3px;
+  background: var(--primary-color);
+  transform: scaleX(0);
+  transform-origin: right;
+  transition: transform 0.5s;
+}
+.menu-nav-link:hover::after {
+  transform: scaleX(1);
+  transform-origin: left;
+}
+.menu .gallery {
+  margin-top: 30px;
+  text-align: center;
+}
+.menu .title {
+  font-size: 24px;
+  color: white;
+  overflow: hidden;
+}
+.menu .title p {
+  font-size: 18px;
+  letter-spacing: 2px;
+  transform: translateY(102%);
+  font-family: var(--body-font);
+}
+.menu .images {
+  margin-top: 36px;
+  display: flex;
+  flex-wrap: wrap;
+}
+@media screen and (max-width: 750px) {
+  .menu .images {
+    justify-content: center;
+  }
+}
+.menu .images .image-link {
+  width: 15vw;
+  margin: 0 12px;
+  overflow: hidden;
+}
+@media screen and (max-width: 750px) {
+  .menu .images .image-link {
+    width: 40vw;
+    margin: 0 12px 12px 0;
+  }
+}
+.menu .images .image-link .image {
+  position: relative;
+  transition: 0.6s;
+}
+.menu .images .image-link .image::before {
+  position: absolute;
+  content: attr(data-label);
+  top: 0;
+  left: 0;
+  z-index: 1;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  width: 100%;
+  height: 100%;
+  color: white;
+  background: rgba(0, 0, 0, 0.6);
+  opacity: 0;
+  transition: 0.4s;
+}
+.menu .images .image-link:hover .image {
+  transform: scale(1.2);
+}
+.menu .images .image-link:hover .image::before {
+  opacity: 1;
+}
+.menu .images img {
+  height: 250px;
+  transform: translateY(102%);
+}
+/** End of Menu Button and Navigation **/
+
+/* Section Headings */ 
+.opskrif-blok {
+  display: flex;
+  flex-direction: column;
+  align-items: center; /* Center align the headers */
+  margin: 2rem 0; /* Space at the top before the header */
+  padding: 1rem; /* Padding for the entire block */
+}
+
+.opskrif-blok h2,
+.opskrif-blok h3 {
+  color: white; /* Text color */
+  letter-spacing: 0.1rem; /* Adjust letter spacing */
+  margin: 0; /* Remove default margin */
+  overflow: hidden; /* Ensure the reveal effect works properly */
+  position: relative; /* Position for pseudo-elements */
+}
+
+.opskrif-blok h2 {
+  padding: 0.5rem; /* Padding for h2 */
+  font-size: var(--font-size-xl); /* Adjust font size for h2 */
+}
+
+.opskrif-blok h3 {
+  padding: 0.25rem; /* Padding for h3 */
+  font-size: var(--font-size-xm); /* Adjust font size for h3 */
+}
+
+/* Reveal Effect */
+.reveal-heading::after {
+  content: '';
+  position: absolute;
+  top: 0;
+  right: 0;
+  width: 100%;
+  height: 100%;
+  background: var(--color-primary-dd);
+  transform: translateX(-101%);
+  transition: transform 2s cubic-bezier(.77,0,.18,1);
+}
+
+.reveal-heading::before {
+  content: '';
+  position: absolute;
+  top: 0;
+  right: 0;
+  width: 100%;
+  height: 100%;
+  background: var(--color-primary-dd);
+  transform: translateX(0);
+  transition: transform 2s cubic-bezier(.77,0,.18,1);
+}
+
+.reveal-heading.visible::after {
+  transform: translateX(101%);
+}
+
+.reveal-heading.visible::before {
+  transform: translateX(200%);
+}
+
+/* End of Section Headings */
+
+/* Q & A Section on each page */
+.antwoorde {
+  grid-column: full-start / full-end;
+  background: var(--primary-color-dd);
+  color: #fff;
+  width: 90%;
+  margin: 40px auto;
+  font-size: var(--font-size-xl);
+}
+
+.acc-block {
+  width: 100%;
+  height: 160px;
+  display: flex;
+  justify-content: space-between;
+  padding: 40px;
+  align-items: center;
+  border-bottom: 1px solid rgba(255, 255, 255, 0.1);
+  cursor: url('../images/g2202.png'), auto;
+}
+
+.acc-no {
+  color: #E0B57E;
+  padding: 0 20px;
+  font-size: var(--font-size-xm);
+}
+
+.acc-toggle-icon {
+  color: #383838;
+}
+
+.acc-title {
+  font-size: var(--font-size-xm);
+}
+
+/* General styles for the content to be revealed */
+ul.oopmaak {
+  padding: 0;
+  overflow: hidden;
+  max-height: 0;
+  opacity: 0;
+  transition: max-height 0.5s ease, opacity 0.5s ease;
+}
+
+/* Styles for list items */
+ul.oopmaak li.versprei {
+  padding: 4px 0;
+  list-style: none;
+  font-size: var(--font-size-xm);
+}
+
+li.versprei:first-child {
+  padding-top: 40px;
+}
+
+li.versprei:last-child {
+  border-bottom: 1px solid rgba(255, 255, 255, 0.1);
+  padding-bottom: 40px;
+}
+
+/* Hover effect to expand the list */
+.acc-toggle:hover + ul.oopmaak {
+  max-height: 500px;
+  opacity: 1;
+}
+
+@media (max-width: 900px) {
+  .acc-block {
+    font-size: 20px;
+    padding: 10px;
+  }
+  ul.oopmaak li.versprei {
+    font-size: var(--font-size-xm);
+  }
+  li.versprei:first-child {
+    padding-top: 10px;
+  }
+  li.versprei:last-child {
+    padding-bottom: 10px;
+  }
+}
+/* End of Q & A Section */
+
+/* Sticky Vertical Slider Sections */
+.classy {
+  display: block;
+  width: 100%;
+}
+.scroll-filler {
+  height: 20vh;
+}
+
+.iiitem {
+  position: relative;
+  background-image: linear-gradient(to bottom, rgba(0, 0, 0, 0.05), transparent 50px);
+}
+.iiitem:after {
+  content: "";
+  display: block;
+  height: 100vh;
+  margin-bottom: -100vh;
+}
+.iiitem:last-of-type {
+  margin-bottom: 0;
+  background-image: linear-gradient(to bottom, rgba(0, 0, 0, 0.05), transparent 50px), linear-gradient(to top, rgba(0, 0, 0, 0.05), transparent 50px);
+}
+.iiitem:last-of-type:after {
+  display: none;
+}
+.iiitem .image-holder {
+  position: sticky;
+  top: 0;
+  float: left;
+  overflow: hidden;
+  width: 50%;
+  height: 100vh;
+}
+.iiitem .image-holder img {
+  position: relative;
+  height: 100%;
+  width: auto;
+  left: 50%;
+  transform: translateX(-50%);
+}
+.iiitem .text-holder {
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  width: 50%;
+  min-height: 120vh;
+  margin-left: 50%;
+  padding: 1em;
+}
+/* End of Sticky Vertical Slider Sections */
+
+/* Value Propositions */
+
+.value {
+  min-height: 100vh;
+  display: flex;
+  align-items: center;
+  font-family: Manrope, sans-serif;
+  color: #1c1d20;
+  overflow-x: hidden;
+}
+
+.ccccontainer {
+  width: min(1200px, 90%);
+  margin: max(16vmin, 50px) auto max(25vmin, 100px);
+}
+
+.member {
+  position: relative;
+  list-style: none;
+  border-top: 1px solid #c9c9c9;
+}
+.member:last-of-type {
+  border-bottom: 1px solid #c9c9c9;
+}
+
+.member-link {
+  padding: 50px;
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  color: inherit;
+  cursor: url('../images/g2202.png'), auto;
+  text-decoration: none;
+  color: var(--color-white);
+
+}
+.member-link:focus {
+  outline-offset: -1px;
+}
+
+.member-photo {
+  position: absolute;
+  height: 135%;
+  left: 0;
+  top: 0;
+  opacity: 0;
+  pointer-events: none;
+  backface-visibility: hidden;
+  z-index: 1;
+}
+
+.member-name {
+  font-size: 60px;
+  font-weight: 400;
+  transition: 0.35s ease-out;
+  color: var(--color-white)
+}
+
+.member:hover .member-name {
+  opacity: 0.5;
+  transform: translateX(-10px);
+}
+
+.member-role {
+  font-size: 18px;
+  font-weight: 500;
+  transition: 0.35s ease-out;
+  color: var(--color-white)
+}
+
+.member:hover .member-role {
+  opacity: 0.5;
+  transform: translateX(10px);
+}
+
+@media (max-width: 1023px) {
+  .member-link {
+    padding: 35px 35px;
+  }
+
+  .member-name {
+    font-size: 35px;
+  }
+
+  .member-role {
+    font-size: 16px;
+  }
+}
+@media (max-width: 767px) {
+  .member-link {
+    padding: 20px 10px;
+  }
+
+  .member-name {
+    font-size: 16px;
+  }
+
+  .member-role {
+    font-size: 15px;
+  }
+}
+/* End of Value Propositions */
+
+/* Text Sections */ 
+.paragraaf { 
+  color: #d0d6e0;  
+  display: grid;  
+  margin: 0;  
+  min-block-size: 40vh;  
+  padding: 5vmin;
+  place-items: center;
+  text-align: center;
+}
+  
+.paragraaf h4 {
+  width: 70vw;
+  font-size: var(--font-size-xm);
+  font-weight: 600; 
+  text-wrap: pretty;
+  margin: 0 auto;
+  padding: 5rem 2rem;
+  line-height: 1.3;
+}
+
+.linear {
+  --from: #e6c397;
+
+  --to: #e0b57e;
+
+  animation-duration: 3s;
+  animation-fill-mode: forwards;
+  animation-iteration-count: infinite;
+  animation-name: linear;
+  animation-timing-function: linear;
+  -webkit-background-clip: text;
+  background-clip: text;
+  background-image: linear-gradient(120deg, var(--from), var(--to) 50%, var(--from));
+  background-size: 200%;
+  width: 70vw;
+  -webkit-text-fill-color: transparent;
+  white-space: nowrap;
+  font-weight: 600; 
+  text-wrap: pretty;
+  margin: 0 auto;
+  padding: 5rem 2rem;
+  line-height: 1.3;
+}
+
+@keyframes linear {
+  100% {
+    background-position: -200% center;
+  }
+}
+ 
+.paragraaf p {
+  width: 70vw;
+  margin: 0 auto;
+  padding: 5rem 2rem;
+  font-size: var(--font-size-xm);
+  line-height: 1.3;
+  font-weight: 600;
+}
+
+.highlight {
+  background: #f5f5f5; /*
+  border-radius: 3vw; */
+  padding: 0 1.5vw 0.25vw;
+  margin-bottom: 0.25vw;
+  display: inline-block;
+}
+
+.highlight.black {
+  background: #272838;
+}
+
+.highlight.yellow {
+  background: #f7f39e;
+}
+
+.highlight.blue {
+  background: #4359f6;
+  color: white;
+}
+/* End of Text Sections */
+
+/* Landing Section */
+
+/* Header Styles */
+header {
+  grid-column: full-start / full-end;
+  grid-row: 1 / 2;
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  padding: 0 2rem;
+  background-color: var(--primary-color);
+  z-index: 1000;
+  width: 100%;
+}
+
+.header-logo {
+  font-family: 'Poppins', sans-serif;
+  display: flex;
+  align-items: center;
+}
+
+.logo-part {
+  font-size: 1.1rem; /* Adjust size as needed */
+  margin-right: 0px; /* Space between parts */
+  letter-spacing: 2px;
+}
+
+.logo-bold {
+  background-color: #483B3D; /* Black background for 'BD' */
+  color: white; /* White font color */
+  padding: 5px 10px; /* Padding for 'BD' */
+  font-weight: 700; /* Bold font */
+}
+
+.logo-block {
+  background-color: #004d4d; /* Green background for 'Skills' */
+  color: white; /* White font color */
+  padding: 5px 10px; /* Adjust padding for the block */
+  font-weight: 700; /* Bold font for contrast */
+}
+
+
+.nav-links {
+  display: flex;
+  gap: 2rem;
+}
+
+.nav-links a {
+  color: var(--white-color);
+  text-decoration: none;
+  font-size: 1.1rem;
+  font-weight: var(--font-weight-regular);
+}
+
+/* Responsive Navigation */
+@media (max-width: 768px) {
+  .nav-links {
+    flex-direction: row;
+    gap: 1rem;
+  }
+
+  .nav-links a {
+    font-size: 1rem;
+  }
+}
+
+
+/* Responsive Navigation */
+@media (max-width: 768px) {
+  .nav-links {
+    flex-direction: row;
+    gap: 1rem;
+  }
+
+  .nav-links a {
+    font-size: 1rem;
+  }
+}
+
+/* Page-Specific Styles */
+
+/* Home Page */ 
+/* Landing Section */
+.seksie-een {
+  grid-row: 1 / 3; /* Span over rows 1 and 2 */
+  grid-column: full-start / full-end;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  background-color: var(); /* Adjust background color */
+  color: var(--white-color);/*
+  padding: 4rem;*/
+  position: relative; /* Ensure z-index works */
+  z-index: 1; /* Place below header */
+}
+
+.seksie-een-inhoud {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  width: 100%;
+  max-width: 1200px; /* Adjust as needed */
+}
+
+.seksie-een .links-seksie {
+  width: 50%;
+  padding: 0 1rem;
+}
+
+.seksie-een .regs-seksie {
+  width: 50%;
+}
+
+.seksie-een img {
+  display: block;
+  width: 100%;
+  height: 100%;
+  object-fit: cover; /* Ensure the image covers the entire container */
+}
+/* Target only h1 within .seksie-een */
+.seksie-een h1 {
+  font-size: var(--font-size-l); /* Change font size */
+  color: var(--color-neutral-light);    /* Change text color */
+  margin-bottom: 10px; /* Add margin */
+  line-height: 1.2;
+}
+
+/* Target only h2 within .seksie-een */
+.seksie-een h2 {
+  font-size: 1.5em; /* Change font size */
+  color: var(--color-neutral-medium);    /* Change text color */
+  margin-bottom: 8px; /* Add margin */
+  line-height: 1.3;
+}
+
+/* Target only p within .seksie-een */
+.seksie-een p {
+  font-size: 1em; /* Change font size */
+  color: #ffffff;    /* Change text color */
+  line-height: 1.5; /* Adjust line height */
+  padding: 0 0 20px 0;
+  line-height: 1.4;
+}
+/* Scroll down button */
+
+/* Social Media Icons */
+.social-media-icons {
+  position: absolute; /* Fix the position on the right side */
+  top: 50%;
+  right: 20px; /* Adjust as needed */
+  transform: translateY(-50%);
+  display: flex;
+  flex-direction: column; /* Arrange icons in a column */
+  align-items: center;
+  z-index: 10; /* Ensure they are on top of other elements */
+}
+
+.social-media-icons a {
+  margin: 10px 0; /* Space between icons */
+}
+
+.social-media-icons svg {
+  width: 20px; /* Adjust size as needed */
+  height: 20px;
+  fill: #ffffff; /* Change color as needed */
+  transition: fill 0.3s;
+}
+
+.social-media-icons svg:hover {
+  fill: #0077b5; /* Change to desired hover color */
+}
+/* Animation for the arrow */
+@keyframes bounce {
+  0%, 20%, 50%, 80%, 100% {
+      transform: translateY(0);
+  }
+  40% {
+      transform: translateY(-10px);
+  }
+  60% {
+      transform: translateY(-5px);
+  }
+}
+
+
+/* Responsive Adjustments */
+@media screen and (max-width: 950px) {
+  .seksie-een {
+    grid-row: 1 / 3; /* Adjust for smaller screens */
+    padding: 2rem;
+  }
+
+  .seksie-een-inhoud {
+    flex-direction: column; /* Change to column direction */
+    justify-content: center; /* Center content vertically */
+    align-items: center; /* Center content horizontally */
+  }
+
+  .seksie-een .links-seksie,
+  .seksie-een .regs-seksie {
+    width: 100%;
+    height: 100vh; /* Full viewport height */
+    position: absolute; /* Overlay text on image */
+    display: flex;
+    justify-content: center; /* Center content horizontally */
+    align-items: center; /* Center content vertically */
+  }
+
+  .seksie-een .regs-seksie {
+    z-index: 1; /* Place image below text */
+  }
+
+  .seksie-een .links-seksie {
+    z-index: 10; /* Place text above image */
+    position: relative; /* Overlay on image */
+    flex-direction: column;
+  }
+
+  .links-seksie h1,
+  .links-seksie h2,
+  .links-seksie p,
+  .links-seksie .knoppe {
+    margin: 1rem 0; /* Add some vertical margin between elements */
+    text-align: center;
+  }
+  .regs-seksie::before {
+    content: '';
+    position: absolute;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    background: rgba(0, 0, 0, 0.6); /* Dark blue with 70% opacity */
+    pointer-events: none; /* Allow interaction with elements below */
+    z-index: 2; /* Ensure overlay is above the image but below content */
+  }
+}
+
+/* Scroll Button */
+.go-down-btn {
+  position: absolute;  /* Fix button position */
+  bottom: 5vh;         /* 5% from the bottom of the viewport */
+  left: 50%;           /* Center horizontally */
+  transform: translateX(-50%);  /* Adjust to perfectly center */
+  z-index: 10;         /* Ensure it's above other elements */
+}
+
+.go-down-btn svg {
+  display: block;
+}
+
+.go-down-btn text {
+  font-size: 11px;
+  transform-origin: center;
+}
+
+/* CSS for rotating text or icon */
+@keyframes rotate {
+  0% {
+    transform: rotate(0deg);
+  }
+  100% {
+    transform: rotate(360deg);
+  }
+}
+
+/* Apply the animation to the button or text/icon inside it */
+.scroll__button {
+  /* Your existing button styles */
+  animation: rotate 3s linear infinite; /* Rotates continuously */
+}
+/* End of Landing Section */
+/* Value List Section */
+.information {
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: flex-start;
+  height: auto;
+  margin: 10%;
+}
+
+.lines {
+  font-size: 4vw;
+  letter-spacing: -.01em;
+  line-height: 1.2; /* Adjusted line height for better spacing */
+  margin: 0;
+  width: 100%;
+  color: rgba(182, 182, 182, 0.2);
+  background: linear-gradient(to right, #b6b6b6, #b6b6b6) no-repeat;
+  -webkit-background-clip: text;
+  background-clip: text;
+  background-size: 0%;
+  transition: background-size cubic-bezier(.1, .5, .5, 1) 0.5s;
+  border-bottom: 1px solid #2F2B28;
+  display: flex;
+  flex-direction: column;
+  align-items: flex-start;
+  justify-content: center;
+  position: relative;
+  padding-bottom: 0.2em; /* Added padding to give more height */
+}
+
+.line-span {
+  position: absolute;
+  width: 100%;
+  height: 100%;
+  background-color: #ECE9E9;
+  color: #0D0D0D;
+  clip-path: polygon(0 50%, 100% 50%, 100% 50%, 0 50%);
+  transform-origin: center;
+  transition: all cubic-bezier(.1, .5, .5, 1) 0.4s;
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+}
+
+.lines:hover > .line-span {
+  clip-path: polygon(0 0, 100% 0, 100% 100%, 0% 100%);
+}
+
+.line-link {
+  text-decoration: none;
+  color: inherit;
+}
+/* End of Value List Section */
+/** Table Section **/
+.tabel {
+  min-height: 60vh;
+  width: 100%;
+  padding: 6rem 2rem;
+}
+.header-container {
+  display: flex;
+  flex-direction: column; /* Stack the headers vertically */
+  align-items: center; /* Center align the headers */
+  margin-bottom: 1rem; /* Space below the header */
+}
+
+.tabel {
+  display: flex; /* Use flex layout for the tabel */
+  flex-direction: column; /* Stack items vertically */
+  align-items: center; /* Center content horizontally 
+  grid-row: 6 / 7;
+  grid-column: full-start / full-end;*/
+  padding: 1rem; /* Add padding around the table */
+}
+
+table {
+  width: 100%;
+  max-width: 960px;
+  border-collapse: separate;
+  border-spacing: 0;
+}
+
+.faq-table tbody tr:nth-child(odd) {
+  background-color: #ECE9E9;
+}
+
+th,
+td { /* cell */
+  padding: 0.75rem;
+  font-size: var(--font-size-xs);
+}
+
+th { /* header cell */
+  font-weight: 600;
+  text-align: left;
+  color: #272838;
+  border-bottom: 2px solid #EB9486;
+  position: sticky;
+  top: 0;
+  background-color: #F9F8F8;
+}
+
+td { /* body cell */
+  color: #7E7F9A;
+}
+
+.faq-table tbody tr:hover {
+  background-color: #25311f; /* Change this to your desired highlight color */
+  color: white; /* Optional: Change text color on hover */
+}
+/** End of Table Section **/
+/* Contact Section */
+.ccoontainer {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: flex-start;
+  height: auto;
+  width: 100vw;
+  color: white;
+  padding: 1em;
+}
+
+.cellphone {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  max-width: 1200px;
+  width: 100%;
+}
+
+.text-row {
+  display: flex;
+  width: 100%;
+}
+
+.explanation {
+  flex: 1;
+  text-align: center;
+}
+
+.explanation {
+  font-size: var(--font-size-xl);
+  color: white;
+  margin: 0;
+  font-weight: 400;
+  padding: 0 20px;
+}
+
+.slider-container {
+  position: relative;
+  width: 50vw; /* Takes 50% of viewport width */
+  height: 50vw; /* 1:1 aspect ratio */
+  margin: 2em 0; /* Space above and below the slider */
+}
+
+.slider {
+  position: absolute;
+  width: 100%;
+  height: 100%;
+  display: flex;
+  flex-direction: column; /* Stack slides vertically */
+}
+
+.slide {
+  flex: 1;
+  width: 100%;
+  height: 100%;
+  opacity: 0;
+  transition: opacity 1s ease-in-out;
+  position: absolute; /* Ensure slides stack on top of each other */
+}
+
+/* Ensure images fit container */
+.slide img {
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
+}
+
+/* Fade animation for each slide */
+@keyframes fade {
+  0%, 100% { opacity: 0; }
+  20%, 80% { opacity: 1; }
+}
+
+.slider {
+  animation: slider-animation 6s infinite;
+}
+
+@keyframes slider-animation {
+  0%, 20% {
+      opacity: 0;
+  }
+  20%, 40% {
+      opacity: 1;
+  }
+  40%, 60% {
+      opacity: 0;
+  }
+  60%, 80% {
+      opacity: 1;
+  }
+  80%, 100% {
+      opacity: 0;
+  }
+}
+
+.slider .slide:nth-child(1) {
+  animation: fade 6s infinite;
+}
+
+.slider .slide:nth-child(2) {
+  animation: fade 6s infinite 2s; /* Starts 2 seconds later */
+}
+
+.slider .slide:nth-child(3) {
+  animation: fade 6s infinite 4s; /* Starts 4 seconds later */
+}
+
+/* Overlay text on the image slider */
+.overlay-text {
+  position: absolute;
+  top: 20%; /* Position 20% from the top */
+  left: 50%; /* Center horizontally */
+  transform: translateX(-50%); /* Center the text */
+  width: 100vw; /* Extend to full viewport width */
+  text-align: center;
+  color: #ffffff; /* Light blue color for contrast */
+  font-size: var(--font-size-xl);
+  font-weight: 600;
+  z-index: 10; /*
+  background: rgba(0, 0, 0, 0.5); *//* Semi-transparent background for better readability */
+  padding: 0.5em;
+  box-sizing: border-box;
+  white-space: nowrap; /* Ensure text does not wrap */
+  /* Adjust to move the text further to the left */
+  margin-left: -10vw; /* Example value to move the text 10vw left */
+  /* Or use transform to adjust more precisely */
+  transform: translateX(calc(-50% - 10vw)); /* Center text and move it 10vw further left */
+  mix-blend-mode: difference;
+  text-shadow: 1px 1px 2px rgba(0, 0, 0, 0.7); /* Shadow for bolder effect */
+}
+/* Existing CSS */
+.contact-scroll {
+  width: 100%;
+  overflow: hidden;
+  margin-top: 3em;
+}
+
+.contact-scrolling-block {
+  width: 100%;
+  position: relative;
+}
+
+.contact-scrolling-container {
+  display: flex;
+  flex-direction: column;
+  width: 100%;
+  position: relative;
+}
+
+.contact-scrolling-rail {
+  width: 100%;
+  height: 5em;
+  padding: 1em 0;
+  position: relative;
+  overflow: hidden;
+}
+
+.contact-scrolling-textobject {
+  font-size: var(--font-size-xl);
+  font-weight: 600;
+  line-height: 1;
+  white-space: nowrap;
+  letter-spacing: 1px;
+  text-decoration: none;
+  color: white; /* Default text color */
+  display: block;
+  position: absolute;
+  top: 0.5em;
+}
+
+.contact-scrolling-textobject span {
+  margin-right: 1.5em;
+}
+
+.contact-tel,
+.contact-whatsapp,
+.contact-email {
+  transform: translateX(-20%);
+  animation: animScrollingContactTextLeft 10s linear infinite;
+}
+
+/* New CSS for the outlined "CONTACT" */
+.contact-outline {
+  -webkit-text-stroke: 1px white; /* Adds a white outline */
+  color: transparent; /* Makes the fill transparent */
+  /* For better visibility, you can adjust the stroke width */
+  /* Example: -webkit-text-stroke: 2px white; */
+}
+
+/* Optional: Add fallback for non-WebKit browsers using text-shadow */
+@supports not (-webkit-text-stroke: 1px white) {
+  .contact-outline {
+      color: white; /* Fallback to white text if stroke isn't supported */
+      text-shadow:
+          -1px -1px 0 white,
+           1px -1px 0 white,
+          -1px  1px 0 white,
+           1px  1px 0 white;
+  }
+}
+
+@keyframes animScrollingContactTextLeft {
+  0% { transform: translateX(-20%); }
+  100% { transform: translateX(-40%); }
+}
+/* responsiveness */
+@media screen and (max-width: 900px) {
+  .text-row {
+      flex-direction: column; /* Stack items vertically */
+      text-align: center; /* Center text within each item */
+  }
+
+  .explanation {
+      flex: none; /* Prevent items from stretching */
+      margin: 0; /* Remove margin */
+      padding: 1em 0; /* Add padding for spacing */
+  }
+
+  .explanation {
+      font-size: var(--font-size-xm); /* Adjust font size for smaller screens */
+  }
+  .overlay-text {
+      font-size: var(--font-size-xl);
+  }
+
+  .slider-container {
+      width: calc(100% - 40px); /* Full viewport width minus 20px padding on each side */
+      padding: 0 20px; /* Add 20px padding on both sides */
+      box-sizing: border-box; /* Include padding in width calculation */
+      margin: 2em auto; /* Center the container horizontally */
+
+      /* Adjust height based on width to maintain 1:1 aspect ratio */
+      height: calc((100vw - 40px) * 1);
+  }
+  .overlay-text {
+      top: 20%; /* Adjust if needed */
+      left: 50%; /* Center horizontally */
+      transform: translateX(-50%); /* Center the text */
+      width: calc(100% - 40px); /* Full width minus padding */
+      font-size: 15px; /* Adjust font size for smaller screens */
+  }
+}
+/* End of Contact Section */
+
+/* Footer Section */
+.footer-seksie {
+  display: grid;
+  grid-template-columns: 1fr; /* Default to single column */
+  gap: 20px; /* Gap between sections */
+  padding: 20px;
+  background-color: var(--primary-color-dd); /* Add a background color */
+  color: var(--color-white);
+}
+
+/* Content container within the footer */
+.footer-inhoud {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 20px; /* Gap between subsections */
+}
+
+/* Subsection styles */
+.sektion {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 20px; /* Gap between subsections */
+}
+
+.subsektion {
+  flex: 1 1 300px; /* Flexbox items to grow, shrink, and initial width */
+}
+
+.subsektion h4 {
+  color: var(--white-color);
+  font-size: 1.2rem;
+  margin-bottom: 10px;
+}
+.subsektion p {
+  color: rgba(255, 255, 255, 0.5);
+  font-size: 1.2rem;
+  line-height: 2.24em;
+}
+.rolling-text-item {
+  color: var(--color-white);
+}
+.rolling-text-item a {
+  color: var(--color-white);
+}
+
+.copyright-sektion {
+  text-align: center; /* Center text within the section */
+}
+
+.copyright {
+  font-size: 1.2rem;
+  color: var(--color-white);
+  text-align: center;
+}
+
+.copyright a {
+  color: var(--color-white);
+  text-decoration: none;
+}
+
+.copyright a:hover {
+  color: var(--color-error);
+}
+
+.snip1143 {
+  display: flex;
+  flex-direction: column; 
+  text-align: left;
+  text-transform: uppercase;
+  font-weight: 500;
+  line-height: 2.1em;
+}
+.snip1143 * {
+  box-sizing: border-box;
+  -webkit-transition: all 0.35s ease;
+  transition: all 0.35s ease;
+}
+.snip1143 li {
+  display: inline-block;
+  list-style: outside none none;
+  overflow: hidden;
+}
+.snip1143 a {
+  padding: 0.3em 0;
+  color: rgba(255, 255, 255, 0.5);
+  position: relative;
+  display: inline-block;
+  letter-spacing: 1px;
+  margin: 0;
+  text-decoration: none;
+}
+.snip1143 a:before,
+.snip1143 a:after {
+  position: absolute;
+  -webkit-transition: all 0.35s ease;
+  transition: all 0.35s ease;
+}
+.snip1143 a:before {
+  top: 100%;
+  display: block;
+  height: 3px;
+  width: 100%;
+  content: "";
+  background-color: #c0392b;
+}
+.snip1143 a:after {
+  padding: 0.3em 0;
+  position: absolute;
+  top: 100%;
+  left: 0;
+  content: attr(data-hover);
+  color: white;
+  white-space: nowrap;
+}
+.snip1143 li:hover a,
+.snip1143 .current a {
+  transform: translateY(-100%);
+  cursor: url('../images/g2202.png'), auto;
+}
+/* End of Footer Section */
+
+/****** Home Page ******/
+/* First Heading Section */
+.opskrif-blok-11 {
+  grid-row: 3 / 4;
+  grid-column: full-start / full-end; 
+}
+/* End of First Heading Section
+
+/* Information Section */ 
+.information-1 {
+  grid-row: 4 / 5;
+  grid-column: full-start / full-end;
+}
+/* End of Information Section */
+
+/* Second Heading */
+.opskrif-blok-12 {
+  grid-row: 5 / 6;
+  grid-column: full-start / full-end; 
+}
+
+/* End of Second Heading */
+
+/* Value Proposition BD Section */
+.value-bd {
+  grid-row: 6 / 7;
+  grid-column: full-start / full-end;
+}
+/* End of Value Proposition BD Section */
+
+/* Third Header Section */
+.opskrif-blok-3 {
+  grid-row: 7 / 8;
+  grid-column: full-start / full-end;
+}
+/* End of Third Header Section */
+
+/* Answers Section First */ 
+.antwoorde-page-1 {
+  grid-row: 8 / 9;
+}
+/* End of Answers Section */
+
+/* Fourth Header Section */
+.opskrif-blok-4 {
+  grid-row: 9 / 10;
+  grid-column: full-start / full-end;
+}
+/* End of Fourth Header Section */
+
+/* Contact Section */
+.ccoontainer-1 {
+  grid-row: 10 / 11;
+  grid-column: full-start / full-end;
+}
+
+/* Footer Section */
+.footer-page-1 {
+  grid-row: 11 / 12;
+  grid-column: full-start / full-end;
+}
+/* End of Footer Section */  
+
+/***** End of Home Page *****/
+
+/***** Equity Page *****/
+
+/* First Text Section */
+.paragraaf-1 {
+  grid-row: 3 / 4;
+  grid-column: full-start / full-end;
+}
+/* End of First Text Section */
+
+/* First Heading Section */
+.opskrif-blok-21 {
+  grid-row: 4 / 5;
+  grid-column: full-start / full-end; 
+}
+/* End of First Heading Section */
+
+/** Table Section **/
+.tabel-2 {
+  grid-row: 5 / 6;
+  grid-column: full-start / full-end;
+}
+/** End of Table Section **/
+
+/* Second Text Section */
+.paragraaf-2 {
+  grid-row: 6 / 7;
+  grid-column: full-start / full-end;
+}
+/* End of Second Text Section */
+
+/* Second Heading Section */
+.opskrif-blok-22 {
+  grid-row: 7 / 8;
+  grid-column: full-start / full-end; 
+}
+/* End of Second Heading Section */
+
+/* Answers Section */
+.antwoorde-page-2 {
+  grid-row: 8 / 9;
+  grid-column: full-start / full-end;
+}
+/* End of Answers Section */
+
+/* Third Text Section */
+.paragraaf-3 {
+  grid-row: 9 / 10;
+  grid-column: full-start / full-end; 
+}
+/* End of Third Text Section */
+
+/* Third Heading Section */
+.opskrif-blok-23 {
+  grid-row: 10 / 11;
+  grid-column: full-start / full-end; 
+}
+/* End of Third Heading Section */
+
+/* Value Proposition EE Section */
+.value-ee {
+  grid-row: 11 / 12;
+  grid-column: full-start / full-end;
+}
+/* End of Value Proposition EE Section */
+
+/* Fourth Text Section */
+.paragraaf-4 {
+  grid-row: 12 / 13;
+  grid-column: full-start / full-end; 
+}
+/* End of Fourth Text Section */
+
+/* Contact Section */
+.ccoontainer-2 {
+  grid-row: 13 / 14;
+  grid-column: full-start / full-end;
+}
+/* End of Contact Section */
+
+/* Footer Section */
+.footer-page-2 {
+  grid-row: 14 / 15;
+  grid-column: full-start / full-end;
+}
+/* End of Footer Section */
+
+/***** End of Equity Page *****/
+
+/***** Skills Page *****/
+
+/* First Text Section */
+.paragraaf-1 {
+  grid-row: 3 / 4;
+  grid-column: full-start / full-end; 
+}
+/* End of First Text Section */
+
+/* First Heading Section */
+.opskrif-blok-31 {
+  grid-row: 4 / 5;
+  grid-column: full-start / full-end; 
+}
+/* End of First Heading Section */
+
+/** Table Section **/
+.tabel-1 {
+  grid-row: 5 / 6;
+  grid-column: full-start / full-end;
+}
+/** End of Table Section **/
+
+/* Second Text Section */
+.paragraaf-2 {
+  grid-row: 6 / 7;
+  grid-column: full-start / full-end; 
+}
+/* End of Second Text Section */
+
+/* Second Heading Section */
+.opskrif-blok-32 {
+  grid-row: 7 / 8;
+  grid-column: full-start / full-end; 
+}
+/* End of Second Heading Section */
+
+/* Answers Section */
+.antwoorde-page-4 {
+  grid-row: 8 / 9;
+  grid-column: full-start / full-end;
+}
+/* End of Answers Section */
+
+/* Third Text Section */
+.paragraaf-3 {
+  grid-row: 9 / 10;
+  grid-column: full-start / full-end; 
+}
+/* End of Third Text Section */
+
+/* Third Heading Section */
+.opskrif-blok-33 {
+  grid-row: 10 / 11;
+  grid-column: full-start / full-end; 
+}
+/* End of Second Heading Section */
+
+/* Value Propositions */
+.value-2 {
+  grid-row: 11 / 12;
+  grid-column: full-start / full-end;
+}
+/* End of Value Propositions */
+
+/* Contact Section */
+.ccoontainer-3 {
+  grid-row: 12 / 13;
+  grid-column: full-start / full-end;
+}
+/* End of Contact Section */
+
+/* Footer Section */
+.footer-page-3 {
+  grid-row: 13 / 14;
+  grid-column: full-start / full-end;
+}
+/* End of Footer Section */
+/***** End of Skills Page *****/
+
+/***** About Page *****/
+
+/* Information Section */
+.information-text {
+  grid-row: 3 / 4;
+  grid-column: full-start / full-end;
+}
+
+/* Basic reset and full height for body */
+.information-text {
+  display: flex;
+  align-items: center;
+  justify-content: flex-start;
+  height: auto;
+  width: 100vw;
+  background-color: var(--primary-color);
+  color: white;
+  padding: 1em;
+}
+
+.text-row {
+  display: flex;
+  width: 100%;
+  margin-top: 4em;
+}
+
+.heading, .explanation {
+  flex: 1;
+  text-align: center;
+}
+
+.heading {
+  font-size: 5em;
+  color: white;
+  margin: 0;
+  margin-bottom: 3em;
+}
+
+.explanation {
+  font-size: 3em;
+  color: white;
+  margin: 0;
+  padding: .6em 0;
+}
+
+@media (max-width: 1200px) {
+  .heading {
+      margin-bottom: 1em;
+  }
+}
+/* End of Information Section */
+
+/** About Us Slider **/
+.contact-slider {
+  grid-row: 4 / 5; 
+  grid-column: full-start / full-end;
+}
+.contact-slider {
+  display: flex;
+  height: 100vh;
+  flex-direction: row; /* Default to side-by-side layout */
+  position: relative; /*
+  background-color: black; */
+  color: white;
+}
+
+.slider-wrapper {
+  display: flex;
+  width: 100%;
+  height: 100%;
+  position: relative;
+}
+
+.image-slideshow, .text-slider {
+  flex: 1;
+  position: relative;
+}
+
+.image-slideshow .slide, .text-slider .text-slide {
+  position: absolute;
+  width: 100%;
+  height: 100%;
+  top: 0;
+  left: 0;
+  opacity: 0;
+  transition: opacity 1s ease-in-out;
+}
+
+.image-slideshow .slide.active, .text-slider .text-slide.active {
+  opacity: 1;
+}
+
+.social-icons {
+  display: flex;
+  gap: 20px; /* Space between each icon */
+  margin-top: 20px; /* Space above the icons */
+  padding-left: 15px; /* Align with the text elements */
+}
+
+.social-icons a {
+  display: inline-block;
+}
+
+.social-icons svg {
+  width: 25px;
+  height: 25px;
+  fill: whitesmoke; /* Change color as needed */
+  transition: transform 0.2s ease-in-out;
+}
+
+.social-icons svg:hover {
+  transform: scale(1.2); /* Slightly enlarge the icon on hover */
+}
+.text-slider h2,
+.text-slider h3,
+.text-slider p {
+  margin: 0; /* Reset margins to avoid unexpected spacing */
+  padding: 0; /* Reset padding to ensure we control the space */
+  line-height: 1.4; /* Adjust line height for better readability */
+}
+
+.text-slider h2 {
+  font-size: 2rem; /* Adjust the size of the H2 */
+  margin-top: 20px; /* Add space at the top before H2 */
+  margin-left: 15px; /* Add space to the left of H2 */
+  padding-bottom: 10px; /* Add some space below H2 */
+}
+
+.text-slider h3 {
+  font-size: 1.5rem; /* Adjust the size of the H3 */
+  margin-top: 10px; /* Space between H2 and H3 */
+  margin-left: 15px; /* Align with H2 */
+  padding-bottom: 8px; /* Space below H3 */
+}
+
+.text-slider p {
+  font-size: 1rem; /* Adjust the size of the paragraph */
+  margin-top: 8px; /* Space between H3 and P */
+  margin-left: 15px; /* Align with H2 and H3 */
+  padding-bottom: 20px; /* Space below the paragraph */
+}
+/*
+.social-icon svg path {
+  fill: lightblue; */ /* Change this to your desired light blue color */ /*
+  transition: fill 0.3s ease; *//* Smooth transition effect */ /*
+} */
+
+/* Hover color for SVG icons */ /*
+.social-icon:hover svg path {
+  fill: darkblue; *//* Change this to your desired dark blue color */ /*
+} */
+
+@keyframes fade {
+  0% { opacity: 0; }
+  50% { opacity: 1; }
+  100% { opacity: 0; }
+}
+
+@media (max-width: 1000px) {
+  .contact-slider {
+      flex-direction: column;
+  }
+
+  .slider-wrapper {
+      position: relative;
+      height: 100%;
+      width: 100%;
+  }
+
+  .image-slideshow, .text-slider {
+      position: absolute; /* Both sliders are absolutely positioned */
+      top: 0;
+      left: 0;
+      width: 100%;
+      height: 100%;
+      background: rgba(0, 0, 0, 0.5); /* Dark blue with 70% opacity */
+  }
+
+  .image-slideshow {
+      z-index: 1; /* Image slider at the back */
+  }
+
+  .text-slider {
+      z-index: 2; /* Text slider on top */
+  }
+}
+/** End of About Us Slider **/
+
+/* First Heading Section */
+.opskrif-blok-41 {
+  grid-row: 5 / 6;
+  grid-column: full-start / full-end; 
+}
+/* End of Second Heading Section */
+
+/* Social Media Menu */
+.sosiaal {
+  grid-row: 6 / 7;
+  grid-column: full-start / full-end;
+  overflow: hidden; /* Prevent overflow from container */
+}
+
+.nemu__item {
+  position: relative;
+  padding: 0 0 20px 0; /* Space around each item */
+}
+
+.nemu__item-link {
+  display: block; /* Change to block to take full width */
+  cursor: pointer;
+  -webkit-text-stroke: 1.5px #ffff;
+  -webkit-text-fill-color: transparent;
+  color: transparent;
+  text-decoration: none; /* Remove the underline */
+  transition: opacity 0.4s;
+  padding: 15px 0; /* Add padding above and below the link */
+  margin-bottom: 10px; /* Add space below the link */
+  position: relative;
+  z-index: 1; /* Ensure link is above other elements */
+}
+
+.nemu__item-link::after {
+  content: "";
+  display: block;
+  width: 100%; /* Full width of the parent */
+  height: 2px; /* Thickness of the line */
+  background-color: gray; /* Color of the line */
+  position: absolute;
+  bottom: 0; /* Position it at the bottom of the link */
+  left: 0; /* Align to the left */
+}
+
+.nemu__item-link:hover {
+  opacity: 0;
+}
+
+.nemu__item-img {
+  pointer-events: none;
+  position: absolute;
+  height: 50vh;
+  max-height: 400px;
+  opacity: 0;
+  left: 100%;
+  top: 50%;
+  transform: translate3d(-100%, -30%, 0) translate3d(0, 20px, 0);
+}
+
+.nemu__item-link:hover + .nemu__item-img {
+  opacity: 1;
+  transform: translate3d(-100%, -30%, 0) rotate3d(0, 0, 1, 4deg);
+  transition: all 0.4s;
+}
+
+.nemu {
+  padding: 10vh 0 25vh;
+  --offset: 20vw;
+  --move-initial: calc(-25% + var(--offset));
+  --move-final: calc(-50% + var(--offset));
+  font-size: 7vw;
+}
+
+.marquee {
+  position: absolute;
+  top: 0;
+  left: 0;
+  overflow: hidden;
+  color: #fff;
+  pointer-events: none;
+  mix-blend-mode: difference;
+  width: 100%; /* Ensure marquee fits within the container */
+}
+
+.marquee__inner {
+  display: flex;
+  position: relative;
+  animation: marquee 5s linear infinite;
+  animation-play-state: paused;
+  opacity: 0;
+  transition: opacity 0.1s;
+}
+
+.nemu__item-link:hover ~ .marquee .marquee__inner {
+  animation-play-state: running;
+  opacity: 1;
+  transition-duration: 0.4s;
+}
+
+.nemu__item-link,
+.marquee span {
+  white-space: nowrap;
+  font-size: 7vw;
+  padding: 0 1vw 20px 1vw;
+  font-weight: 900;
+  line-height: 1.15;
+}
+
+.marquee span {
+  font-style: italic;
+}
+
+.nemu__item-link:focus {
+  outline: 2px solid #ffffff; /* Optional: Add a visible focus outline */
+  transition: opacity 0.1s;
+}
+
+@keyframes marquee {
+  0% {
+    transform: translate3d(var(--move-initial), 0, 0);
+  }
+  100% {
+    transform: translate3d(var(--move-final), 0, 0);
+  }
+}
+/* End of Social Media Menu */
+
+/* Contact Section */
+.ccoontainer-4 {
+  grid-row: 12 / 13;
+  grid-column: full-start / full-end;
+}
+/* End of Contact Section */
+
+/* Footer Section */
+.footer-page-4 {
+  grid-row: 13 / 14;
+  grid-column: full-start / full-end;
+}
+/* End of Footer Section */
+/***** End of About Page *****/

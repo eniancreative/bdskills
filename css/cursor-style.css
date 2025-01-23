@@ -1,0 +1,35 @@
+ 
+
+body{ 
+  cursor: url('../images/g2202.png'), auto;
+}
+
+.title{
+  font-family: 'Playfair Display', serif;
+  font-size: 4vw;
+  line-height: 1.3;
+  text-decoration: none;
+  color: #1d213f;
+  font-weight: 400;
+  -webkit-font-smoothing: antialiased;
+  text-align: center;
+}
+
+@media (hover: hover) and (pointer: fine) {
+  #cursor {
+    z-index: 99;
+    position: fixed;
+    left: 0;
+    top: 0;
+    pointer-events: none;
+    will-change: transform;
+  }
+
+  #cursor .cursor--inner {
+    width: 137.795px;  /* Match this size with your design */
+    height: 137.795px;
+    border-radius: 50%;
+    border: solid 1px #1d213f;
+  }
+  
+}
